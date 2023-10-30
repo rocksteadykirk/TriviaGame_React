@@ -1,5 +1,3 @@
-import { Container, Row, Col, Button } from "reactstrap";
-
 const GameObjective = () => {
     return (
         <>
