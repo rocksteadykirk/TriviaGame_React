@@ -1,6 +1,6 @@
 import './App.css';
 import Footer from './components/Footer';
-import GameObjective from './components/GameObjective';
+import GameObjective from './pages/GameObjective';
 
 function App() {
   return (
