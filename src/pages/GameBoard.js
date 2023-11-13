@@ -6,7 +6,7 @@ import PlayersList from "../features/PlayersList";
 
 const GameBoard = () => {
     const [state, dispatch] = useReducer(listReducer, initialState);
-    const { listPlayers } = state;
+    const [listPlayers] = state;
 
     return (
         <>
