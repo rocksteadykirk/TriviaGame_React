@@ -4,6 +4,7 @@ import { listReducer } from "../features/playersState";
 import PlayerNameForm from "../features/PlayerNameForm";
 import PlayersList from "../features/PlayersList";
 
+
 const GameBoard = () => {
     const [state, dispatch] = useReducer(listReducer, initialState);
 
@@ -17,3 +18,15 @@ const GameBoard = () => {
 };
 
 export default GameBoard;
+
+
+/*
+- useReducer hook is used to manage the state of the component and pass state to child components.
+- useReducer takes two arguments: a reducer function (listReducer in this case) and an initial state (initialState).
+  both listReducer and initialState defined in playersState.js.
+  It returns an array with two elements:
+  state: The current state of the component, initialized with initialState(which is defined in playersState.js).
+  dispatch: A function used to dispatch actions to update the state. dispatch receives it's type specification from 
+            from the reducer function defined in playersState and it's paylload and actual action is determined by 
+            the function it is called in. In this case PlayersNameForm.
+*/
