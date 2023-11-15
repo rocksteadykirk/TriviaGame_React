@@ -4,6 +4,7 @@ import { listReducer } from "../features/playersState";
 import PlayerNameForm from "../features/PlayerNameForm";
 import PlayersList from "../features/PlayersList";
 import Dice from "../features/Dice";
+import CountdownComponent from "../features/Timer";
 
 
 const GameBoard = () => {
@@ -15,6 +16,8 @@ const GameBoard = () => {
             <PlayerNameForm dispatch={dispatch} />
             <PlayersList listPlayers={state} />
             <Dice />
+            <h1> You are seeing the timer </h1>
+            <CountdownComponent initialSeconds={15} />
         </>
     );
 };
