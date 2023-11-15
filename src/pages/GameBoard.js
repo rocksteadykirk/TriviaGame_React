@@ -3,7 +3,7 @@ import { initialState } from "../features/playersState";
 import { listReducer } from "../features/playersState";
 import PlayerNameForm from "../features/PlayerNameForm";
 import PlayersList from "../features/PlayersList";
-
+import CountdownComponent from "../features/Timer";
 
 const GameBoard = () => {
     const [state, dispatch] = useReducer(listReducer, initialState);
@@ -13,6 +13,8 @@ const GameBoard = () => {
             <h1>You are seeing the GameBoard component</h1>
             <PlayerNameForm dispatch={dispatch} />
             <PlayersList listPlayers={state} />
+            <h1> You are seeing the timer </h1>
+            <CountdownComponent initialSeconds={15}/>
         </>
     );
 };
