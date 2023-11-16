@@ -2,38 +2,36 @@ import React, { useState, useEffect } from "react";
 
 
 
-// Define a functional component called CountdownComponent that takes initialSeconds as a prop
-const CountdownComponent = ({ initialSeconds }) => {
-    const [secondsLeft, setSecondsLeft] = useState(0);       // Initialize secondsLeft to 0 initially
-    const [timerStarted, setTimerStarted] = useState(false); // Track whether the timer has been started
+// Define a functional component that takes initialSeconds as a prop
+const Timer = ({ timerValue }) => {
+    const [secondsLeft, setSecondsLeft] = useState(timerValue);       // Initialize secondsLeft to 0 initially
+    // const [timerStarted, setTimerStarted] = useState(false); // Track whether the timer has been started
 
 
 // Use the useEffect hook to perform side effects in function components
     useEffect(() => {
-        if (!timerStarted || secondsLeft <= 0) return;                       // If secondsLeft is less than or equal to 0, return to exit the function and stop the countdown.
-
-        const timeout = setTimeout(() => {                  // Set up a setTimeout to decrement secondsLeft every 1000 milliseconds (1 second)
-            setSecondsLeft(secondsLeft - 1);                // Update secondsLeft by decrementing it by 1
+        // if (!timerStarted || secondsLeft <= 0) return            // If secondsLeft is less than or equal to 0, return to exit the function and stop the countdown.
+        console.log( 'log', secondsLeft);
+        const timeout = setTimeout(() => {                      // Set up a setTimeout to decrement secondsLeft every 1000 milliseconds (1 second)
+            setSecondsLeft(secondsLeft - 1);                    // Update secondsLeft by decrementing it by 1
         }, 1000);
 
-        return () => clearTimeout(timeout);                 // Return a cleanup function that clears the timeout to avoid memory leaks
-    }, [timerStarted, secondsLeft]);
+        return () => clearTimeout(timeout);                     // Return a cleanup function that clears the timeout to avoid memory leaks
+    }, []);
 
-    const startTimer = () => {
-        setSecondsLeft(initialSeconds);
-        setTimerStarted(true);                              // Set timerStarted to true when the countdown is explicitly started
-
-    };
+    // const start = () => {
+    //     setSecondsLeft(timerValue);
+    //     // setTimerStarted(true)
+    // };
 
     return (
         <div>
             <p>Time: {secondsLeft}</p>
-            {/* <button onClick={startTimer}>Start Countdown</button> */}
         </div>
     );
 };
 
-export default CountdownComponent;
+export default Timer;
 
 
 
