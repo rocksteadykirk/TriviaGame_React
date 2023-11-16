@@ -17,7 +17,7 @@ function App() {
       const response = await fetch(request);
 
       if (!response.ok) {
-        return Promise.reject(`Unabe to fetch, status: ${response.status}`);
+        return Promise.reject(`Unable to fetch, status: ${response.status}`);
       }
 
       const results = await response.json();
