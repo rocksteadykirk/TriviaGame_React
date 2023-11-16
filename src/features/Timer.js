@@ -1,39 +1,36 @@
 import React, { useState, useEffect } from "react";
 
-
-
-// Define a functional component called CountdownComponent that takes initialSeconds as a prop
-const CountdownComponent = ({ initialSeconds }) => {
-    const [secondsLeft, setSecondsLeft] = useState(0);       // Initialize secondsLeft to 0 initially
-    const [timerStarted, setTimerStarted] = useState(false); // Track whether the timer has been started
-
-
-// Use the useEffect hook to perform side effects in function components
+const Timer = ({ timerValue }) => {
+    const [secondsLeft, setSecondsLeft] = useState(5);
+    console.log('This is timer value ', timerValue)
+    console.log('This is seconds left', secondsLeft)
     useEffect(() => {
-        if (!timerStarted || secondsLeft <= 0) return;                       // If secondsLeft is less than or equal to 0, return to exit the function and stop the countdown.
+        console.log('use effect seconds left')
+        if (secondsLeft === 0) return; // Stop the countdown if secondsLeft reaches 0
 
-        const timeout = setTimeout(() => {                  // Set up a setTimeout to decrement secondsLeft every 1000 milliseconds (1 second)
-            setSecondsLeft(secondsLeft - 1);                // Update secondsLeft by decrementing it by 1
+        const timeout = setTimeout(() => {
+            setSecondsLeft((prevSeconds) => prevSeconds - 1); // Decrement secondsLeft by 1
         }, 1000);
 
-        return () => clearTimeout(timeout);                 // Return a cleanup function that clears the timeout to avoid memory leaks
-    }, [timerStarted, secondsLeft]);
+        return () => clearTimeout(timeout); // Cleanup function to clear the timeout
 
-    const startTimer = () => {
-        setSecondsLeft(initialSeconds);
-        setTimerStarted(true);                              // Set timerStarted to true when the countdown is explicitly started
+    }, [secondsLeft]); // Re-run the effect whenever secondsLeft changes
 
-    };
+    useEffect(() => {
+        // Reset the timer when timerValue changes (e.g., when rolling the dice)
+        console.log('useEffect timer value')
+        setSecondsLeft(timerValue);
+    }, [timerValue]);
 
     return (
         <div>
             <p>Time: {secondsLeft}</p>
-            {/* <button onClick={startTimer}>Start Countdown</button> */}
         </div>
     );
 };
 
-export default CountdownComponent;
+export default Timer;
+
 
 
 
