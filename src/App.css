@@ -54,12 +54,19 @@
   margin: 30px;
 }
 
-.btn-objective {
+.btn-custom {
   color: white;
   font-weight: bold;
   background-color: #9A93C6;
-  width: 100px;
-  height: 40px;
+  padding-left: 2%;
+  padding-right: 2%;
+  height: 30px;
+  border-color: #9A93C6;
+  cursor: pointer;
+}
+
+.btn-custom:active {
+  background-color: #4F3180;
   border-color: #4F3180;
 }
 
