@@ -1,13 +1,15 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { initialState } from "../features/playersState";
 import { listReducer } from "../features/playersState";
 import PlayerNameForm from "../features/PlayerNameForm";
 import PlayersList from "../features/PlayersList";
 import Dice from "../features/Dice";
+import Question from "../features/Question";
 
 
-const GameBoard = () => {
+const GameBoard = ({ trivia }) => {
     const [state, dispatch] = useReducer(listReducer, initialState);
+    const [questionIdx, setTriviaQuestion] = useState(0);
 
     return (
         <>
@@ -15,6 +17,7 @@ const GameBoard = () => {
             <PlayerNameForm dispatch={dispatch} />
             <PlayersList listPlayers={state} />
             <Dice />
+            <Question question={trivia[questionIdx].question.text}/>
         </>
     );
 };
