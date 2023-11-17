@@ -11,7 +11,6 @@ function App() {
   const [errMsg, setErrMsg] = useState(""); // rejected
 
   useEffect(() => {
-    const data = [];
     const request = `https://the-trivia-api.com/v2/questions?categories=general_knowledge&difficulties=easy&limit=10`;
     const fetchData = async () => {
       const response = await fetch(request);
@@ -22,17 +21,11 @@ function App() {
 
       const results = await response.json();
 
-      results.map((trivia) => {
-        if (!trivia.question.text.toLowerCase().includes("which")) {
-          data.push(trivia);
-        }
-      });
-
       setTimeout(() => {
         setLoading(false);
-        setData(data);
+        setData(results.filter((result) => !result.question.text.toLowerCase().includes("which")));
         setErrMsg("");
-      }, 3000);
+      }, 1000);
     };
 
     fetchData().catch((error) => {
