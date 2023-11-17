@@ -19,7 +19,7 @@ const PlayerNameForm = ({ dispatch }) => {
 
     return (
         <>
-            <h1>Join Game</h1>
+            <h1>Who is playing?</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <input
@@ -29,7 +29,6 @@ const PlayerNameForm = ({ dispatch }) => {
                         placeholder='Enter player name'
                     />
                     <button type='submit'>Add</button>
-                    <h6>Player names must consist of alphabetical characters, be at least 3 characters long, and not exceed 10 characters.</h6>
                 </div>
             </form>
         </>

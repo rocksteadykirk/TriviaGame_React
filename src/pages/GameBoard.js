@@ -1,6 +1,7 @@
 import { useReducer, useState } from "react";
 import { initialState } from "../features/playersState";
 import { listReducer } from "../features/playersState";
+import { Col, Row, Container } from "reactstrap";
 import PlayerNameForm from "../features/PlayerNameForm";
 import PlayersList from "../features/PlayersList";
 import Dice from "../features/Dice";
@@ -10,15 +11,23 @@ import Question from "../features/Question";
 const GameBoard = ({ trivia }) => {
     const [state, dispatch] = useReducer(listReducer, initialState);
     const [questionIdx, setTriviaQuestion] = useState(0);
+    const [gameStarted, setGameStarted] = useState(false);
 
     return (
-        <>
-            <h1>You are seeing the GameBoard component</h1>
-            <PlayerNameForm dispatch={dispatch} />
-            <PlayersList listPlayers={state} />
-            <Dice />
-            <Question question={trivia[questionIdx].question.text}/>
-        </>
+        <Container fluid className='game-board'>
+            <Row>
+                <Col sm={3}>
+                    <PlayersList listPlayers={state} />
+                </Col>
+                <Col sm={9}>
+                    <PlayerNameForm dispatch={dispatch} />
+                    {gameStarted
+                        && <Dice />
+                        && <Question question={trivia[questionIdx].question.text} />
+                    }
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

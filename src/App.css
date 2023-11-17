@@ -8,7 +8,6 @@
   font-weight: 500;
   color: white;
   padding: 20px 0;
-  margin-top: 2rem;
 }
 
 .site-footer a {
@@ -23,12 +22,12 @@
   color: white;
   background-color: #4F3180;
   border-radius: 20px;
-  width: 918px;
-  height: 150px;
+  width: 60%;
   text-align: center;
   margin: auto;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 2%;
+  padding: 1.5%;
 }
 
 .welcome p {
@@ -41,17 +40,22 @@
   color: white;
   background-color: #4F3180;
   border-radius: 20px;
-  width: 918px;
-  height: 400px;
+  width: 60%;
   text-align: center;
   margin: auto;
-  margin-top: 30px;
-  padding-top: 10px;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  padding: 1.5%;
 }
 
 .objective p {
   font-size: 25px;
   margin: 30px;
+}
+
+.game-board {
+  background-color:#4F3180;
+  height: 560px;
 }
 
 .btn-custom {
@@ -68,6 +72,16 @@
 .btn-custom:active {
   background-color: #4F3180;
   border-color: #4F3180;
+}
+
+.player-list {
+  margin-top: 10px;
+  border-color: #4F3180;
+  border-style: solid;
+  border-radius: 10px;
+  text-align: center;
+  background-color: white;
+  height: 100%;
 }
 
 .dice {
