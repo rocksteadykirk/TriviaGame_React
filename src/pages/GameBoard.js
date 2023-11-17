@@ -5,6 +5,7 @@ import PlayerNameForm from "../features/PlayerNameForm";
 import PlayersList from "../features/PlayersList";
 import Dice from "../features/Dice";
 import Question from "../features/Question";
+import Answer from "../features/Answer";
 
 
 const GameBoard = ({ trivia }) => {
@@ -18,6 +19,7 @@ const GameBoard = ({ trivia }) => {
             <PlayersList listPlayers={state} />
             <Dice />
             <Question question={trivia[questionIdx].question.text}/>
+            <Answer answer={trivia[questionIdx].correctAnswer}/>
         </>
     );
 };
