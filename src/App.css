@@ -55,7 +55,7 @@
 
 .game-board {
   background-color:#4F3180;
-  height: 560px;
+  height: 580px;
 }
 
 .btn-custom {
@@ -81,7 +81,19 @@
   border-radius: 10px;
   text-align: center;
   background-color: white;
-  height: 100%;
+  height: 565px;
+}
+
+.player-details {
+  border-color: #4F3180;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.points-style {
+  color: #4F3180;
 }
 
 .dice {

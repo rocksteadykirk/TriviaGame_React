@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   const [isLoading, setLoading] = useState(true); // pending
   const [data, setData] = useState(null); // fulfilled
-  const [errMsg, setErrMsg] = useState(""); // rejected
+  const [errMsg, setErrMsg] = useState(''); // rejected
 
   useEffect(() => {
     const request = `https://the-trivia-api.com/v2/questions?categories=general_knowledge&difficulties=easy&limit=10`;

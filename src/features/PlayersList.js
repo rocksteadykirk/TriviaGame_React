@@ -6,8 +6,10 @@ import Player from './Player';
 const PlayersList = ({ listPlayers }) => {
     return (
         <Row>
-            <Col className='player-list mt-2'>
-                <h2>Players</h2>
+            <Col className='player-list m-2'>
+                <Row>
+                    <h2>Players</h2>
+                </Row>
                 {listPlayers.map((player, index) => (
                     <Player key={index} player={player} />
                 ))}
