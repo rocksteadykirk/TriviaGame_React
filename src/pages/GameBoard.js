@@ -26,7 +26,6 @@ const GameBoard = ({ trivia }) => {
 
 export default GameBoard;
 
-
 /*
 - useReducer hook is used to manage the state of the component and pass state to child components.
 - useReducer takes two arguments: a reducer function (listReducer in this case) and an initial state (initialState).
