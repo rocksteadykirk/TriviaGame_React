@@ -1,4 +1,3 @@
-import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const GameObjective = () => {
@@ -10,7 +9,7 @@ const GameObjective = () => {
                 <p>The sum of the two dice rolled not only determines the points but also the time available to answer each question.</p>
                 <p>The player with the most points at the end wins.</p>
                 <Link to={'gameboard'}>
-                    <Button className='btn-custom'>Let's Go!</Button>
+                    <button className='btn-custom'>Let's Go!</button>
                 </Link>
             </div >
         </>
