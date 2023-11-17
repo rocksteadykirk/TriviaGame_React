@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from "react";
 
 const Timer = ({ timerValue }) => {
-    const [secondsLeft, setSecondsLeft] = useState(5);
-    console.log('This is timer value ', timerValue)
-    console.log('This is seconds left', secondsLeft)
-    useEffect(() => {
-        console.log('use effect seconds left')
-        if (secondsLeft === 0) return; // Stop the countdown if secondsLeft reaches 0
+    const [secondsLeft, setSecondsLeft] = useState(timerValue);
+    console.log('the whole thing');
 
-        const timeout = setTimeout(() => {
-            setSecondsLeft((prevSeconds) => prevSeconds - 1); // Decrement secondsLeft by 1
+    useEffect(() => {
+        console.log('seconds left', secondsLeft);
+        if (secondsLeft === 0) return; // Stop the countdown when secondsLeft reaches 0
+
+        const timeOut = setTimeout(() => {
+            setSecondsLeft(secondsLeft - 1); // Decrement secondsLeft by 1
         }, 1000);
 
-        return () => clearTimeout(timeout); // Cleanup function to clear the timeout
+        return () => clearTimeout(timeOut);
 
     }, [secondsLeft]); // Re-run the effect whenever secondsLeft changes
 
     useEffect(() => {
-        // Reset the timer when timerValue changes (e.g., when rolling the dice)
-        console.log('useEffect timer value')
         setSecondsLeft(timerValue);
-    }, [timerValue]);
+    }, [timerValue]); //use to re-render the Timer component when the prop value change - Timer component will not be automatically re-rendered when prop value from the Dice component change.
 
     return (
         <div>
