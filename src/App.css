@@ -75,12 +75,8 @@
 }
 
 .player-list {
-  margin-top: 10px;
   border-color: #4F3180;
   border-style: solid;
-  border-radius: 10px;
-  text-align: center;
-  background-color: white;
   height: 565px;
 }
 
@@ -94,6 +90,12 @@
 
 .points-style {
   color: #4F3180;
+}
+
+.trivia-block {
+  height: 455px;
+  border-color: #4F3180;
+  border-style: solid;
 }
 
 .dice {

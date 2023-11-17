@@ -7,11 +7,18 @@ import PlayersList from "../features/PlayersList";
 import Dice from "../features/Dice";
 import Question from "../features/Question";
 
-
 const GameBoard = ({ trivia }) => {
     const [state, dispatch] = useReducer(listReducer, initialState);
     const [questionIdx, setTriviaQuestion] = useState(0);
     const [gameStarted, setGameStarted] = useState(false);
+
+    function startGame() {
+        if(state.length < 2) {
+            alert('You need at least 2 players to start the game!');
+        } else {
+            setGameStarted(true);
+        }        
+    }
 
     return (
         <Container fluid className='game-board'>
@@ -20,11 +27,34 @@ const GameBoard = ({ trivia }) => {
                     <PlayersList listPlayers={state} />
                 </Col>
                 <Col sm={9}>
-                    <PlayerNameForm dispatch={dispatch} />
-                    {gameStarted
-                        && <Dice />
-                        && <Question question={trivia[questionIdx].question.text} />
-                    }
+                    <Row >
+                        <Col className='fw-bold text-white m-4 fs-1 text-center'>
+                            DiceQuizz Trivia
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className='trivia-block bg-white rounded-4 m-2 p-4 text-center'>
+                            <Row>
+                                <Col className="p-5">
+                                    {!gameStarted &&
+                                        <PlayerNameForm dispatch={dispatch} />
+                                    }
+
+                                    {gameStarted
+                                        && <Dice />
+                                       /*  && <Question question={trivia[questionIdx].question.text} /> */
+                                    }
+                                </Col>
+                            </Row>
+                            {!gameStarted &&
+                                <Row>
+                                    <Col>
+                                        <button onClick={startGame} className='btn-custom'>Ready</button>
+                                    </Col>
+                                </Row>
+                            }
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         </Container>
@@ -32,7 +62,6 @@ const GameBoard = ({ trivia }) => {
 };
 
 export default GameBoard;
-
 
 /*
 - useReducer hook is used to manage the state of the component and pass state to child components.

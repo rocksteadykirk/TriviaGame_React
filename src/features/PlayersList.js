@@ -6,9 +6,11 @@ import Player from './Player';
 const PlayersList = ({ listPlayers }) => {
     return (
         <Row>
-            <Col className='player-list m-2'>
+            <Col className='player-list rounded-4 bg-white m-2'>
                 <Row>
-                    <h2>Players</h2>
+                    <Col className='text-center h2'>
+                        Players
+                    </Col>
                 </Row>
                 {listPlayers.map((player, index) => (
                     <Player key={index} player={player} />
