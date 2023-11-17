@@ -16,9 +16,8 @@ const Dice = () => {
 
     return (
         <>
-            <h1>You are seeing the dice component</h1>
             <div>
-                <button onClick={rollDice}>Roll Dice!</button>
+                <button onClick={rollDice} className='btn-custom'>Roll Dice!</button>
             </div>
             <div>
                 <span className={`dice dice-${dice1}`} />

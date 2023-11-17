@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { Col, Row } from 'reactstrap';
 
 const PlayerNameForm = ({ dispatch }) => {
     const [newPlayer, setNewPlayer] = useState('');             // to handle state of each new player added
@@ -18,21 +18,30 @@ const PlayerNameForm = ({ dispatch }) => {
     }
 
     return (
-        <>
-            <h1>Join Game</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <input
-                        type='text'
-                        value={newPlayer}                                       // Bind the input value to the newPlayer state
-                        onChange={(e) => setNewPlayer(e.target.value)}          // Update the newPlayer state as the user types
-                        placeholder='Enter player name'
-                    />
-                    <button type='submit'>Add</button>
-                    <h6>Player names must consist of alphabetical characters, be at least 3 characters long, and not exceed 10 characters.</h6>
-                </div>
-            </form>
-        </>
+        <Row>
+            <Col>
+                <Row>
+                    <Col className='h3'>
+                        Who is playing?
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <form onSubmit={handleSubmit}>
+                            <div>
+                                <input
+                                    type='text'
+                                    value={newPlayer}                                       // Bind the input value to the newPlayer state
+                                    onChange={(e) => setNewPlayer(e.target.value)}          // Update the newPlayer state as the user types
+                                    placeholder='Enter player name'
+                                />
+                                <button type='submit' className='btn-custom'>Add</button>
+                            </div>
+                        </form>
+                    </Col>
+                </Row>
+            </Col>
+        </Row>
     );
 };
 
