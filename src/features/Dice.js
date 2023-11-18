@@ -7,13 +7,16 @@ const Dice = ({ trivia }) => {
     const [dice1, setDice1] = useState(0);
     const [dice2, setDice2] = useState(0);
     const timerValue = (dice1 + dice2);
-    console.log('timer', timerValue)
+    // console.log('timer', timerValue)
 
     const rollDice = () => {
         const roll1 = Math.floor(Math.random() * 6) + 1;
         const roll2 = Math.floor(Math.random() * 6) + 1;
         setDice1(roll1);
         setDice2(roll2);
+        
+        setTriviaQuestion(roll1 !== 0 ? Math.floor(Math.random()* trivia.length) : questionIdx);
+        
     };
 
     return (
