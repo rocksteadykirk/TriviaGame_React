@@ -1,17 +1,10 @@
 import { useState } from 'react';
 
 const Answer = ({ answer }) => {
-    const [showAnswer, setShowAnswer] = useState(false);
-
-    const handleClick = () => {
-        setShowAnswer(true);
-    };
 
     return (
         <>
-            <h1>You are seeing the Answer component</h1>
-            <button className='btn-custom' onClick={handleClick} >Show Answer </button>
-            {showAnswer ? <h4>{answer}</h4> : null}
+            <h4>{answer}</h4>
         </>
     );
 }
