@@ -12,11 +12,17 @@ const GameBoard = ({ trivia }) => {
     const [state, dispatch] = useReducer(listReducer, initialState);
     const [gameStarted, setGameStarted] = useState(false);
 
+    console.log(state);
+
     function startGame() {
         if(state.length < 2) {
             alert('You need at least 2 players to start the game!');
         } else {
             setGameStarted(true);
+            dispatch({
+                type: 'IS_PLAYING',
+                payload: 0
+            });
         }        
     }
 

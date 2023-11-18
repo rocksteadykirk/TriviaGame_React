@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 
 const Timer = ({ timerValue }) => {
     const [secondsLeft, setSecondsLeft] = useState(timerValue);
-    console.log('the whole thing');
 
     useEffect(() => {
-        console.log('seconds left', secondsLeft);
         if (secondsLeft === 0) return; // Stop the countdown when secondsLeft reaches 0
 
         const timeOut = setTimeout(() => {

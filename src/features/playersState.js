@@ -8,9 +8,13 @@ export const listReducer = (state, action) => {
                 {
                     id: state.length,
                     name: action.payload,
-                    points: 0
+                    points: 0,
+                    isPlaying: false
                 }
             ];
+        case 'IS_PLAYING':
+            Object.assign(state[action.payload], { isPlaying: true });
+            return state;
         default:
             return state;
     }
