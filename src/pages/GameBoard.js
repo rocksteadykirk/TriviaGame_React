@@ -10,7 +10,6 @@ import Answer from "../features/Answer";
 
 const GameBoard = ({ trivia }) => {
     const [state, dispatch] = useReducer(listReducer, initialState);
-    const [questionIdx, setTriviaQuestion] = useState(0);
     const [gameStarted, setGameStarted] = useState(false);
 
     function startGame() {
@@ -43,8 +42,7 @@ const GameBoard = ({ trivia }) => {
                                     }
 
                                     {gameStarted
-                                        && <Dice />
-                                       /*  && <Question question={trivia[questionIdx].question.text} /> */
+                                        && <Dice trivia={trivia} />
                                     }
                                 </Col>
                             </Row>

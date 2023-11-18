@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Timer from "./Timer";
+import Question from "./Question";
 
-const Dice = () => {
+const Dice = ({ trivia }) => {
+    const [questionIdx, setTriviaQuestion] = useState(0);
     const [dice1, setDice1] = useState(0);
     const [dice2, setDice2] = useState(0);
     const timerValue = (dice1 + dice2);
@@ -24,7 +26,9 @@ const Dice = () => {
                 <span className={`dice dice-${dice2}`} />
             </div>
             <Timer timerValue={timerValue} />
-
+            {Boolean(dice1) &&
+                <Question question={trivia[questionIdx].question.text} answer={trivia[questionIdx].correctAnswer} />
+            }
         </>
     );
 };
