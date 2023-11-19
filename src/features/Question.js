@@ -1,11 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Answer from './Answer';
 
 const Question = ({ question, answer }) => {
     const [showAnswer, setShowAnswer] = useState(false);
+    console.log('showAnswer', showAnswer);
+    console.log('question', question)
     function handleShowAnswer() {
         setShowAnswer(true);
     };
+
+    useEffect(() => {
+        setShowAnswer(false);
+    },[question])
+
 
     return (
         <>
