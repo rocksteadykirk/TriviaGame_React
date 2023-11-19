@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Col, Row } from 'reactstrap';
+import { stateContext } from './playersState';
 
-const PlayerNameForm = ({ dispatch }) => {
+const PlayerNameForm = () => {
     const [newPlayer, setNewPlayer] = useState('');             // to handle state of each new player added
     const inputRegex = /^[A-Za-z]{2,10}$/;                      // Regex to handle form validation: Alphabet Only / At least 3 Characters, At most 10 characters
+    const [, dispatch] = useContext(stateContext);
 
     function handleSubmit(e) {
         e.preventDefault();                                     // Prevent the default form submission behavior
@@ -12,7 +14,7 @@ const PlayerNameForm = ({ dispatch }) => {
             dispatch({
                 type: 'ADD_PLAYER',
                 payload: newPlayer
-            })
+            });
             setNewPlayer('');                                    // Reset the newPlayer state to an empty string after submission
         }
     }

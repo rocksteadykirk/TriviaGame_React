@@ -1,12 +1,38 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { stateContext } from './playersState';
 
 const Answer = ({ answer }) => {
+    const [state,dispatch] = useContext(stateContext);
 
+    function nextPlayer() {
+        //use state from context to get the id of the user currently playing
+        //player object isPlaying property is true
+        const isPlaying = state.find((player) => player.isPlaying === true).id;
+        const nextPlayer = isPlaying + 1;
+
+        dispatch({
+            type: 'RESET_IS_PLAYING'
+        });
+
+        if(nextPlayer < state.length) {
+            dispatch({
+                type: 'IS_PLAYING',
+                payload: nextPlayer
+            });
+        } else {
+            dispatch({
+                type: 'IS_PLAYING',
+                payload: 0
+            });
+        }
+
+        console.log('next player ',nextPlayer);
+    }
     return (
         <>
             <h4>{answer}</h4>
             <button className='btn-custom'>Right, and On Time</button>{' '}
-            <button className='btn-custom'>Whoops!</button>
+            <button className='btn-custom' onClick={nextPlayer}>Whoops!</button>
         </>
     );
 }

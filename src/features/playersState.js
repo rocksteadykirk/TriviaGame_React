@@ -1,3 +1,5 @@
+import { createContext } from "react";
+
 export const initialState = [];
 
 export const listReducer = (state, action) => {
@@ -12,6 +14,10 @@ export const listReducer = (state, action) => {
                     isPlaying: false
                 }
             ];
+        case 'RESET_IS_PLAYING':
+            return state.map(({ id, name, points }) => ({
+                id: id, name: name, points: points, isPlaying: false
+            }));
         case 'IS_PLAYING':
             Object.assign(state[action.payload], { isPlaying: true });
             return state;
@@ -19,6 +25,8 @@ export const listReducer = (state, action) => {
             return state;
     }
 };
+
+export const stateContext = createContext();
 
 /*
 Reducer Function

@@ -1,5 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
+import { initialState } from './features/playersState';
+import { listReducer } from "./features/playersState";
+import { stateContext } from './features/playersState';
 import Footer from './components/Footer';
 import GameObjective from './pages/GameObjective';
 import GameBoard from './pages/GameBoard';
@@ -9,6 +12,11 @@ function App() {
   const [isLoading, setLoading] = useState(true); // pending
   const [data, setData] = useState(null); // fulfilled
   const [errMsg, setErrMsg] = useState(''); // rejected
+
+  const [state, dispatch] = useReducer(listReducer, initialState);
+
+
+  console.log(state);
 
   useEffect(() => {
     const request = `https://the-trivia-api.com/v2/questions?categories=general_knowledge&difficulties=easy&limit=10`;
@@ -49,9 +57,13 @@ function App() {
 
   return (
     <>
+
       <Routes>
         <Route path='/' element={<GameObjective />} />
-        <Route path='/gameboard' element={<GameBoard trivia={data} />} />
+        <Route path='/gameboard' element={
+          <stateContext.Provider value={[state, dispatch]}>
+            <GameBoard trivia={data} />
+          </stateContext.Provider>} />
       </Routes>
       <Footer />
     </>
