@@ -15,12 +15,11 @@ export const listReducer = (state, action) => {
                 }
             ];
         case 'RESET_IS_PLAYING':
-            return state.map(({ id, name, points }) => ({
-                id: id, name: name, points: points, isPlaying: false
-            }));
+            return state.map((player) => ({ ...player, isPlaying: false }));
         case 'IS_PLAYING':
-            Object.assign(state[action.payload], { isPlaying: true });
-            return state;
+            return state.map((player) => 
+                player.id === action.payload ? { ...player, isPlaying: true } : player
+            );
         default:
             return state;
     }

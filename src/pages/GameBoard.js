@@ -3,8 +3,6 @@ import { Col, Row, Container } from "reactstrap";
 import PlayerNameForm from "../features/PlayerNameForm";
 import PlayersList from "../features/PlayersList";
 import Dice from "../features/Dice";
-import Question from "../features/Question";
-import Answer from "../features/Answer";
 import { stateContext } from "../features/playersState";
 
 const GameBoard = ({ trivia }) => {
