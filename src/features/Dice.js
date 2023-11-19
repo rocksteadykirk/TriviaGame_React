@@ -14,9 +14,12 @@ const Dice = ({ trivia }) => {
         const roll2 = Math.floor(Math.random() * 6) + 1;
         setDice1(roll1);
         setDice2(roll2);
-        
-        setTriviaQuestion(roll1 !== 0 ? Math.floor(Math.random()* trivia.length) : questionIdx);
-        
+
+        if (questionIdx < trivia.length - 1) {
+            setTriviaQuestion(questionIdx + 1)
+        }
+        // console.log('trivia length ', trivia.length)
+        // console.log('question index ', questionIdx)
     };
 
     return (
