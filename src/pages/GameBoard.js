@@ -1,22 +1,25 @@
-import { useReducer, useState } from "react";
-import { initialState } from "../features/playersState";
-import { listReducer } from "../features/playersState";
+import {useContext, useState } from "react";
 import { Col, Row, Container } from "reactstrap";
 import PlayerNameForm from "../features/PlayerNameForm";
 import PlayersList from "../features/PlayersList";
 import Dice from "../features/Dice";
 import Question from "../features/Question";
 import Answer from "../features/Answer";
+import { stateContext } from "../features/playersState";
 
 const GameBoard = ({ trivia }) => {
-    const [state, dispatch] = useReducer(listReducer, initialState);
     const [gameStarted, setGameStarted] = useState(false);
+    const [state, dispatch] = useContext(stateContext);
 
     function startGame() {
         if(state.length < 2) {
             alert('You need at least 2 players to start the game!');
         } else {
             setGameStarted(true);
+            dispatch({
+                type: 'IS_PLAYING',
+                payload: 0
+            });
         }        
     }
 
@@ -38,7 +41,7 @@ const GameBoard = ({ trivia }) => {
                             <Row>
                                 <Col className="p-5">
                                     {!gameStarted &&
-                                        <PlayerNameForm dispatch={dispatch} />
+                                        <PlayerNameForm/>
                                     }
 
                                     {gameStarted
