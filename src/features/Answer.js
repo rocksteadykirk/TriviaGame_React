@@ -28,10 +28,20 @@ const Answer = ({ answer }) => {
 
         console.log('next player ',nextPlayer);
     }
+    ////////////////Working
+    function addPoints() {
+        dispatch({
+            type: 'ADD_POINTS'
+        });
+
+        nextPlayer()
+    }
+    ////////////////Working
+
     return (
         <>
             <h4>{answer}</h4>
-            <button className='btn-custom'>Right, and On Time</button>{' '}
+            <button className='btn-custom'onClick={addPoints} >Right, and On Time</button>{' '}
             <button className='btn-custom' onClick={nextPlayer}>Whoops!</button>
         </>
     );

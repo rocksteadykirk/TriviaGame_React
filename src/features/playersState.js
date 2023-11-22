@@ -20,6 +20,14 @@ export const listReducer = (state, action) => {
             return state.map((player) => 
                 player.id === action.payload ? { ...player, isPlaying: true } : player
             );
+
+            /////////////working
+            case 'ADD_POINTS':
+                return state.map((player) =>
+                    player.isPlaying ? { ...player, points: player.points + 1, isPlaying: false } : player
+                );
+            /////////////working
+
         default:
             return state;
     }
