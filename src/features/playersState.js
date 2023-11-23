@@ -24,7 +24,7 @@ export const listReducer = (state, action) => {
             /////////////working
             case 'ADD_POINTS':
                 return state.map((player) =>
-                    player.isPlaying ? { ...player, points: player.points + 1, isPlaying: false } : player
+                    player.isPlaying ? { ...player, points: player.points + 1 } : player
                 );
             /////////////working
 
